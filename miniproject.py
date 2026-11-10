@@ -96,5 +96,82 @@ def update_student():
     students[student_id]["marks"] =marks
     print("marks updated successfully.")  
 update_student() 
-   
+
+
+def delete_students():
+    student_id =input("enter student id:").strip()
+
+    if student_id not in students:
+        print("student not found")
+        return
+
+    confirm =input("confirm delete? (yes/no):").strip().lower()
+    if confirm == "yes":
+        del students[student_id]
+        print("student deleted successfully.")
+    else:
+        print("deletion cancelled.")
+delete_students()   
+
+
+def class_statistics():
+    if not students:
+        print("no students records available.")
+        return
+
+    marks =[student["marks"]for student in students.values()]
+
+    total =sum(marks)
+    average =total/len(marks)
+    highest =max(marks)
+    lowest =min(marks)
+
+    print("class statistics")
+
+    print("total students:",len(students))
+    print("total marks:",total)
+    print("average marks:",round(average,2))
+    print("highest marks:",highest)
+    print("lowest marks:",lowest)
+
+class_statistics()    
+
+
+
+def main():
+    while True:
+        print("student management system")
+
+        print("1. add a student")
+        print("2. view all students")
+        print("3. search for a student")
+        print("4. update student marks")
+        print("5. delete a student")
+        print("6. calculate class statistics")
+        print("7. exit")
+
+        choice =input("enter your choice:").strip()
+        if choice =="1":
+            add_student()
+        elif choice =="2":
+            view_students()
+        elif choice =="3":
+            search_student()
+        elif choice =="4":
+            update_student()
+        elif choice =="5":
+            delete_students()
+        elif choice =="6":
+            class_statistics()
+        elif choice =="7":
+            print("thank you!")
+            break
+        else:
+            print("invalid choice. please try again.")
+
+main()            
+
+
+    
+
 
