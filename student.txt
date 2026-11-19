@@ -1,0 +1,5 @@
+welcome to python file handlingstudent name:fatima
+course:python
+
+city:mumbai
+age:28
